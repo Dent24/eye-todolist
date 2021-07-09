@@ -1,30 +1,14 @@
 <template>
-    <div class="login-wrap">
-        <div class="login-title">系統登入</div>
-        <input type="text" class="login-input" placeholder="帳號">
-        <input type="text" class="login-input" placeholder="密碼">
-        <a href="#" @click="login" class="login-button">登入</a>
-        <router-link to="/register" class="login-button">註冊</router-link>
+    <div class="register-wrap">
+        <div class="register-title">系統登入</div>
+        <input type="text" class="register-input" placeholder="帳號">
+        <input type="text" class="register-input" placeholder="密碼">
+        <a class="register-button">註冊</a>
     </div>
 </template>
 
-<script>
-import { mapActions } from 'vuex'
-
-export default {
-    methods: {
-        ...mapActions([
-            'setIsLogin'
-        ]),
-        login() {
-            this.setIsLogin(true);
-        }
-    }
-}
-</script>
-
 <style scoped>
-    .login-wrap {
+    .register-wrap {
         margin: 100px auto 0;
         padding-top: 50px;
         width: 500px;
@@ -32,12 +16,12 @@ export default {
         text-align: center;
         border: 2px solid #666;
     }
-    .login-title {
+    .register-title {
         margin-bottom: 20px;
         font-size: 36px;
         font-weight: bold;
     }
-    .login-input {
+    .register-input {
         display: block;
         margin: 0 auto 20px;
         padding: 0 5px;
@@ -45,7 +29,7 @@ export default {
         height: 36px;
         font-size: 24px;
     }
-    .login-button {
+    .register-button {
         display: inline-block;
         margin: 0 20px;
         width: 100px;
@@ -57,7 +41,7 @@ export default {
         border-radius: 5px;
         border: 2px solid #000;
     }
-    .login-button:hover {
+    .register-button:hover {
         color: #FFF;
         background: #000;
     }

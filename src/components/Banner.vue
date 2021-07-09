@@ -1,15 +1,20 @@
 <template>
     <div class="banner">
-        {{ msg }}
+        <a href="#" class="logout" @click="logout">登出</a>
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
     name: 'Banner',
-    data() {
-        return {
-            msg: 'test'
+    methods: {
+        ...mapActions([
+            'setIsLogin'
+        ]),
+        logout()  {
+            this.setIsLogin(false);
         }
     }
 }
@@ -28,5 +33,13 @@ export default {
     background: #FFF;
     text-align: right;
     box-shadow: 0 10px 10px -2px #999;
+}
+.logout {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+}
+.logout:hover {
+    color: #999;
 }
 </style>
