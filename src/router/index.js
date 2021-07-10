@@ -3,7 +3,6 @@ import Home from '../views/Home.vue'
 import Create from '../views/Create.vue'
 import Modify from '../views/Modify.vue'
 import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
 
 const routes = [
     // 主頁
@@ -20,7 +19,7 @@ const routes = [
     },
     // 修改
     {
-        path: '/modify',
+        path: '/modify/:id',
         name: 'Modify',
         component: Modify
     },
@@ -30,12 +29,6 @@ const routes = [
         alias: '/login',
         name: 'Login',
         component: Login
-    },
-    // 註冊
-    {
-        path: '/register',
-        name: 'Register',
-        component: Register
     }
 ]
 

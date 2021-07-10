@@ -1,23 +1,39 @@
 <template>
-    <div class="login-wrap">
+    <form @submit.prevent="login" class="login-wrap">
         <div class="login-title">系統登入</div>
-        <input type="text" class="login-input" placeholder="帳號">
-        <input type="text" class="login-input" placeholder="密碼">
-        <a href="#" @click="login" class="login-button">登入</a>
-        <router-link to="/register" class="login-button">註冊</router-link>
-    </div>
+        <input v-model="loginData.account" type="text" class="login-input" placeholder="帳號">
+        <input v-model="loginData.passwd" type="text" class="login-input" placeholder="密碼">
+        <input type="submit" class="login-button a-button" value="登入">
+    </form>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import ajax from '@/lib/ajax'
 
 export default {
+    data() {
+        return {
+            loginData: {
+                account: '',
+                passwd: ''
+            }
+        }
+    },
     methods: {
         ...mapActions([
             'setIsLogin'
         ]),
         login() {
-            this.setIsLogin(true);
+            ajax({
+                method: 'post',
+                url: '/auth',
+                data: this.loginData,
+                success: () => {
+                    this.setIsLogin(true);
+                    this.$router.push('/home');
+                }
+            });
         }
     }
 }
@@ -46,15 +62,10 @@ export default {
         font-size: 24px;
     }
     .login-button {
-        display: inline-block;
         margin: 0 20px;
         width: 100px;
-        height: 36px;
         color: #000;
-        text-decoration: none;
         font-size: 24px;
-        line-height: 30px;
-        border-radius: 5px;
         border: 2px solid #000;
     }
     .login-button:hover {

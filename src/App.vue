@@ -35,7 +35,7 @@ export default {
     }
     .wrap {
         margin: 120px auto 0;
-        width: 900px;
+        width: 1200px;
     }
     .title-wrap .title {
         font-size: 36px;
@@ -54,8 +54,40 @@ export default {
         height: 36px;
         text-align: center;
         text-decoration: none;
+        font-size: 20px;
+        cursor: pointer;
         line-height: 36px;
         border-radius: 5px;
         border: 1px solid;
+    }
+    .star-wrap {
+        float: left;
+        position: relative;
+        width: 18px;
+        height: 16px;
+    }
+    .star-mask {
+        position: absolute;
+        width: 9px;
+        height: 16px;
+        top: 0;
+        overflow: hidden;
+    }
+    .odd-star {
+        left: 0;
+    }
+    .even-star {
+        right: 0;
+    }
+    .fa-star {
+        position: absolute;
+        top: 0;
+        color: #6558F5;
+    }
+    .odd-star .fa-star {
+        left: 0;
+    }
+    .even-star .fa-star {
+        right: 0;
     }
 </style>

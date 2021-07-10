@@ -15,6 +15,7 @@ export default {
         ]),
         logout()  {
             this.setIsLogin(false);
+            this.$router.push('/login');
         }
     }
 }
