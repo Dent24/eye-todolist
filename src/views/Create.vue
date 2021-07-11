@@ -1,22 +1,21 @@
 <template>
     <div class="create-wrap wrap">
-        <div class="title-wrap">
-            <span class="title">新增 To Do List</span>
-            <span class="time">資料建立時間 {{ modified_time }}</span>
-        </div>
-        <hr />
+        <TitleWrap :modified_time="modified_time" />
         <FormWrap formType="create" :toDoId="id" @submit="createToDo" />
     </div>
 </template>
 
 <script>
-import FormWrap from '@/components/FormWrap.vue'
 import dateFormat from '@/lib/dateFormat'
 import ajax from '@/lib/ajax'
+import FormWrap from '@/components/FormWrap.vue'
+import TitleWrap from '@/components/TitleWrap.vue'
 
 export default {
+    name: 'Create',
     components: {
-        FormWrap
+        FormWrap,
+        TitleWrap
     },
     data() {
         return {
@@ -25,15 +24,18 @@ export default {
         }
     },
     created() {
+        // 新增時間
+        this.modified_time = dateFormat(new Date());
+        // 搜尋最新ID
         ajax({
             url: '/to-do-list/the-newest-id',
             success: (data) => {
                 this.id = data.result;
             }
         });
-        this.modified_time = dateFormat(new Date());
     },
     methods: {
+        // 新增
         createToDo(data) {
             const param = {
                 ...data,
@@ -52,6 +54,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-</style>

@@ -12,6 +12,7 @@ import { mapActions } from 'vuex'
 import ajax from '@/lib/ajax'
 
 export default {
+    name: 'Login',
     data() {
         return {
             loginData: {
@@ -24,6 +25,7 @@ export default {
         ...mapActions([
             'setIsLogin'
         ]),
+        // 登入
         login() {
             ajax({
                 method: 'post',

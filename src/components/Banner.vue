@@ -13,6 +13,7 @@ export default {
         ...mapActions([
             'setIsLogin'
         ]),
+        // 登出
         logout()  {
             this.setIsLogin(false);
             this.$router.push('/login');

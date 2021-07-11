@@ -1,22 +1,21 @@
 <template>
     <div class="create-wrap wrap">
-        <div class="title-wrap">
-            <span class="title">修改 To Do List</span>
-            <span class="time">資料修改時間 {{ modified_time }}</span>
-        </div>
-        <hr />
+        <TitleWrap :modified_time="modified_time" />
         <FormWrap formType="modify" :toDoId="id" @submit="modifyToDo" :originalData="originalData" />
     </div>
 </template>
 
 <script>
-import FormWrap from '@/components/FormWrap.vue'
 import dateFormat from '@/lib/dateFormat'
 import ajax from '@/lib/ajax'
+import FormWrap from '@/components/FormWrap.vue'
+import TitleWrap from '@/components/TitleWrap.vue'
 
 export default {
+    name: 'Modify',
     components: {
-        FormWrap
+        FormWrap,
+        TitleWrap
     },
     data() {
         return {
@@ -30,7 +29,9 @@ export default {
         }
     },
     created() {
+        // 修改時間
         this.modified_time = dateFormat(new Date());
+        // 搜尋此ID的資料
         ajax({
             url: `/to-do-list/detail/${this.id}?type=json`,
             success: (data) => {
@@ -39,6 +40,7 @@ export default {
         });
     },
     methods: {
+        // 修改
         modifyToDo(data) {
             const param = {};
             Object.keys(data).forEach((ele) => {
@@ -57,6 +59,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-</style>

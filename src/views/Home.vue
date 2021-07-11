@@ -1,10 +1,6 @@
 <template>
     <div class="home-wrap wrap">
-        <div class="title-wrap">
-            <span class="title">To Do List 清單</span>
-            <router-link to="/create" class="home-create-button a-button">新增</router-link>
-        </div>
-        <hr />
+        <TitleWrap />
         <table class="home-list">
             <tr>
                 <th class="home-list-id">編號</th>
@@ -42,9 +38,13 @@
 
 <script>
 import ajax from '@/lib/ajax'
+import TitleWrap from '@/components/TitleWrap.vue'
 
 export default {
     name: 'Home',
+    components: {
+        TitleWrap
+    },
     data() {
         return {
             toDoList: []
@@ -54,6 +54,7 @@ export default {
         this.getList();
     },
     methods: {
+        // 搜尋 to do list
         getList() {
             ajax({
                 url: '/to-do-list/list',
@@ -62,6 +63,7 @@ export default {
                 }
             });
         },
+        // 刪除
         deleteList(id) {
             ajax({
                 method: 'delete',
@@ -77,15 +79,10 @@ export default {
 </script>
 
 <style scoped>
-    .home-create-button {
-        float: right;
-    }
-    .home-create-button,
     .home-item-modify {
         color: #5AF;
         border-color: #5AF;
     }
-    .home-create-button:hover,
     .home-item-modify:hover {
         color: #FFF;
         background: #5AF;

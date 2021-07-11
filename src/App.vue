@@ -37,17 +37,6 @@ export default {
         margin: 120px auto 0;
         width: 1200px;
     }
-    .title-wrap .title {
-        font-size: 36px;
-        font-weight: bold;
-    }
-    .title-wrap .time {
-        float: right;
-        margin-top: 27px;
-    }
-    hr {
-        margin: 20px 0;
-    }
     .a-button {
         display: inline-block;
         width: 80px;

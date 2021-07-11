@@ -30,6 +30,7 @@
 
 <script>
 export default {
+    name: 'FormWrap',
     props: {
         formType: {
             type: String,
@@ -59,11 +60,13 @@ export default {
     },
     watch:  {
         originalData(val) {
+            // 如果是修改, 覆蓋資料
             const { author, brief, content, level, subject, reserved_time } = val;
             this.toDoData = { author, brief, content, level, subject, reserved_time: reserved_time.replace(' ', 'T') };
         }
     },
     methods: {
+        // 資料送出
         submit() {
             const formData = {
                 ...this.toDoData,
